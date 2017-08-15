@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>政府机关</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="governCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>政府机关</h4></div>
+            <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">政府名称</th>
+                <th style="text-align: center">政府级别</th>
+                <th style="text-align: center">地址</th>
+                <th style="text-align: center">精确坐标</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="govern in governs">
+                <td>
+                    <span ng-if="!govern.$edit">{{govern.GovernName}}</span>
+                    <div ng-if="govern.$edit">
+                        <input type="text" ng-model="govern.GovernName">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!govern.$edit">{{govern.GovernLevel}}</span>
+                    <div ng-if="govern.$edit">
+                        <input type="text" ng-model="govern.GovernLevel">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!govern.$edit">{{govern.GovernAddress}}</span>
+                    <div ng-if="govern.$edit">
+                        <input type="text" ng-model="govern.GovernAddress">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!govern.$edit">{{govern.GoverCord}}</span>
+                    <div ng-if="govern.$edit">
+                        <input type="text" ng-model="govern.GoverCord">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!govern.$edit" ng-click="govern.$edit=true" >编辑</button>
+                    <button class="btn btn-default" ng-if="govern.$edit" ng-click="govern.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!govern.$edit" ng-click="deleteGovern($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="text" ng-model="newGovernName" placeholder="请输入政府名称">
+            <input type="text" ng-model="newGovernLevel" placeholder="请输入政府类型">
+            <input type="text" ng-model="newGovernAddress" placeholder="请输入地址">
+            <input type="text" ng-model="newGoverCord" placeholder="请输入精确坐标">
+
+            <button class="btn btn-default" ng-click="newGovern()">新建</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

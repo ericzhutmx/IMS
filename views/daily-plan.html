@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <script src="/bower_components/ng-table-export/ng-table-export.js"></script>
+    <script src="/public/javascripts/controller/planCtrl.js"></script>
+    <title>日常管理-预案与处置程序</title>
+</head>
+<body>
+    <div ng-controller="planCtrl as plan11">
+        <!--<script type="text/ng-template" id="modal.html">-->
+            <!--<div>-->
+                <!--<div class="modal-header">-->
+                    <!--<h3 style="text-align: center">新增</h3>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<p>内容</p>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button class="btn btn-default" ng-click="ok()">确认</button>-->
+                    <!--<button class="btn btn-default" ng-click="cance()">取消</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</script>-->
+        <div class="jumbotron">
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="PlanNameSearch">预案名称</label>
+                        <input type="text" id="PlanNameSearch" class="form-control" filter ="{'PlanName':'text'}" sortable="'PlanName'" ng-model="row.PlanName">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="PlanAttrSearch">预案属性</label>
+                        <input type="text" id="PlanAttrSearch" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="PlanTypeSearch">类型</label>
+                        <input type="text" id="PlanTypeSearch" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="PlanDepartSearch">制定部门/单位</label>
+                        <input type="text" id="PlanDepartSearch" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="PlanLevelSearch">等级</label>
+                        <input type="text" id="PlanLevelSearch" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="PlanVersionSearch">版本号</label>
+                        <input type="text" id="PlanVersionSearch" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="PlanDateSearch">编制日期</label>
+                        <input type="text" id="PlanDateSearch" class="form-control">
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>预案与处置程序</h4>
+                <button type="button" class="btn btn-default" ng-click="statereverse()">新增</button>
+                <!--模态框代码，指向id为newplan的元素，以模态框的形式显示-->
+
+            </div>
+            <div class="panel-body">
+                <div ng-show="newinput">
+                    <p>123</p>
+                </div>
+                <table class="table table-hover table-bordered" data-pagination="true" ng-table="plan11.tableParams" show-filter="true" ng-form="plan11.tableForm" disable-filter="plan11.isAdding" demo-tracked-table="plan11.tableTracker">
+                    <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+                        <td style="text-align: center" data-title="'名称'"  filter ="{'PlanName':'text'}" sortable="'PlanName'" ng-switch="row.isEditing" ng-class="PlanName.$dirty ? 'bg-warning' : ''" ng-form="PlanName" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanName}}</span>
+                            <div class="controls" ng-class="PlanName.$invalid && PlanName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="name" ng-model="row.PlanName" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center; width: 130px" data-title="'属性'" filter="{'PlanAttr':'select'}" filter-data="plan11.level"  sortable="'PlanAttr'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanAttr}}</span>
+                            <div class="controls" ng-class="PlanAttr.$invalid && PlanAttr.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanAttr" ng-model="row.PlanAttr" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'类型'" filter="{'PlanType':'text'}" sortable="'PlanType'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanType}}</span>
+                            <div class="controls" ng-class="PlanType.$invalid && PlanType.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanType" ng-model="row.PlanType" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+                        <td style="text-align: center; width: 130px" data-title="'制定部门/单位'" filter="{'PlanDepart':'text'}" sortable="'PlanDepart'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanDepart}}</span>
+                            <div class="controls" ng-class="PlanDepart.$invalid && PlanDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanDepart" ng-model="row.PlanDepart" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+
+                        <td style="text-align: center; width: 70px" data-title="'等级'" filter="{'PlanLevel':'text'}" sortable="'PlanLevel'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanLevel}}</span>
+                            <div class="controls" ng-class="PlanLevel.$invalid && PlanLevel.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanLevel" ng-model="row.PlanLevel" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+
+                        <td style="text-align: center; width: 120px" data-title="'版本号'" filter="{'PlanVersion':'text'}" sortable="'PlanVersion'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanVersion}}</span>
+                            <div class="controls" ng-class="PlanVersion.$invalid && PlanVersion.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanVersion" ng-model="row.PlanVersion" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+
+                        <td style="text-align: center; width: 100px" data-title="'编制日期'" filter="{'PlanDate':'text'}" sortable="'PlanDate'" ng-switch="row.isEditing" ng-class="PlanAttr.$dirty ? 'bg-warning' : ''" ng-form="PlanAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.PlanDate}}</span>
+                            <div class="controls" ng-class="PlanDate.$invalid && PlanDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="PlanDate" ng-model="row.PlanDate" class="editable-input form-control input-sm" required/>
+                            </div>
+                        </td>
+
+
+                        <td style="text-align: center; width: 130px" data-title="'操作'">
+                            <button class="btn btn-default" ng-click="plan11.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                            <button class="btn btn-default" ng-click="plan11.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                            <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                            <button class="btn btn-default" ng-click="plan11.del(row)" ng-if="!row.isEditing">删除</button>
+                        </td>
+                    </tr>
+                    <!--</tbody>-->
+                </table>
+                <p>{{helloworld}}</p>
+                <!--<div class="alert alert-warning alert-dismissable" role="alert" style="margin-top: 50px">-->
+                <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                <!--<strong>Warning!</strong> Better check yourself, you're not looking too good.-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<input type="text" ng-model="newPlanName" placeholder="请输入新的预案名称">-->
+                <!--<input type="text" ng-model="newPlanAttr" placeholder="请输入新的预案属性">-->
+                <!--<input type="text" ng-model="newPlanType1" placeholder="请输入新的预案类型">-->
+                <!--<input type="text" ng-model="newPlanDepart1" placeholder="请输入预案制定部门/单位">-->
+                <!--<input type="text" ng-model="newPlanLevel" placeholder="请输入预案等级">-->
+                <!--<input type="text" ng-model="newPlanVersion" placeholder="请输入预案版本号">-->
+                <!--<input type="text" ng-model="newPlanDate1" placeholder="请输入日期">-->
+                <!--<button class="btn btn-default" ng-click="newPlan()">新建</button>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+

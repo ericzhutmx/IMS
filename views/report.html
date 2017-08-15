@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>事件接报</title>
+</head>
+<body>
+<div class="container" style="margin-top: 100px" ng-controller="reportCtrl">
+    <div class="jumbotron">
+            <h4>事件接报</h4>
+        <div class="panel panel-default" ui-sref="report">
+            <div class="panel-heading"><b>报案人基本信息</b></div>
+            <div class="panel-body">
+                <form novalidate>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="reporterName">报案人</label>
+                                <input type="text" class="form-control" aria-label="" id="reporterName" ng-model="newReporterName">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="reporterPhone">报案电话</label>
+                                <input type="text" class="form-control" aria-label="" id="reporterPhone" ng-model="newReporterPhone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="reportAccident">接报时间</label>
+                                <input type="text" class="form-control" aria-label="" id="reportAccident" placeholder="时间具体到分钟" ng-model="newReportAccident">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="reportDepartment">报案人电话</label>
+                                <input type="text" class="form-control" aria-label="" id="reportDepartment" ng-model="newReporterDepartment">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default" ui-sref="report">
+            <div class="panel-heading"><b>事故信息</b></div>
+            <div class="panel-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="accidentName">事件名称</label>
+                                <input type="text" class="form-control" id="accidentName" ng-model="newAccidentName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="accidentTime">事件爆发时间</label>
+                                <input type="text" class="form-control" id="accidentTime" placeholder="时间精确到分钟" ng-model="newAccidentTime">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="accidentType">事件类型</label>
+                                <select class="form-control" id="accidentType" ng-model="plans.PlanName1">
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="accidentAddress">地址</label>
+                                <input type="text" class="form-control" id="accidentAddress" ng-model="newAccidentAddress">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="form-group radio">
+                                <p>精确坐标</p>
+                                <label>
+                                    <input type="radio" name="yes" value="yes" id="option1" ng-model="yes">
+                                    是
+                                </label>
+                                <label>
+                                    <input type="radio" name="no" value="no" id="option2" ng-model="no">
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label for="accidentLong">经度</label>
+                                <input type="text" class="form-control" id="accidentLong" ng-model="newAccidentLong">
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label for="accidentLat">纬度</label>
+                                <input type="text" class="form-control" id="accidentLat" ng-model="newAccidentLat">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="markButton" style="opacity: 0">地图标记</label>
+                            <button class="btn btn-md btn-default" data-toggle="modal" data-target="#mapMark" id="markButton">地图标记</button>
+
+                            <!--标记地图模态框-->
+                            <div class="modal fade" id="mapMark" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>地图标记</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <!--这里放地图-->
+                                                <p>这里是地图</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button  class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button class="btn btn-primary">保存标记</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="accidentDescription">事件描述</label>
+                            <textarea class="form-control" rows="3" id="accidentDescription" ng-model="newAccidentDescription"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="accidentReason">事件初步分析原因</label>
+                            <textarea class="form-control" rows="3" id="accidentReason" ng-model="newAccidentReason"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>发送短信</label>
+                            <label class="checkbox-inline"><input type="checkbox" id="top" value="应急救援领导小组">应急救援领导小组</label>
+                            <label class="checkbox-inline"><input type="checkbox" id="department" value="机场各部门">机场各部门</label>
+                            <label class="checkbox-inline"><input type="checkbox" id="inside" value="驻场单位">驻场单位</label>
+                            <label class="checkbox-inline"><input type="checkbox" id="outside" value="外部救援力量">外部救援力量</label>
+                            <label class="checkbox-inline"><input type="checkbox" id="employer" value="机场领导">机场领导</label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-3">
+                            <button type="submit" class="btn btn-default" ng-click="addReport()">确认</button>
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

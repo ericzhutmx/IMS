@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>培训与演练</title>
+</head>
+<body>
+<div ng-controller="trainingCtrl">
+    <div class="jumbotron">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="TrainingName">名称</label>
+                    <input type="text" class="form-control" ng-model="row.TrainingName" id="TrainingName">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="TrainingType">类型</label>
+                    <input type="text" class="form-control" ng-model="row.TrainingType" id="TrainingType">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="TrainingDepart">制定部门</label>
+                    <input type="text" class="form-control" ng-model="row.TrainingDepart" id="TrainingDepart">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="TrainingDate">编制日期</label>
+                    <input type="text" class="form-control" ng-model="row.TrainingDate" id="TrainingDate">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel panel-default" ng-controller="trainingCtrl as train11">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2"><h4>培训与演练</h4></div>
+                <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered" style="text-align: center"  data-pagination="true" ng-table="train11.tableParams" show-filter="true" ng-form="train11.tableForm" disable-filter="train11.isAdding" demo-tracked-table="train11.tableTracker">
+                <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+                    <td style="text-align: center" data-title="'名称'"  filter ="{'TrainingName':'text'}" sortable="'TrainingName'" ng-switch="row.isEditing" ng-class="TrainingName.$dirty ? 'bg-warning' : ''" ng-form="TrainingName" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.TrainingName}}</span>
+                        <div class="controls" ng-class="TrainingName.$invalid && TrainingName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="TrainingName" ng-model="row.TrainingName" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'制定部门/单位'"  filter ="{'TrainingDepart':'text'}" sortable="'TrainingDepart'" ng-switch="row.isEditing" ng-class="TrainingDepart.$dirty ? 'bg-warning' : ''" ng-form="TrainingDepart" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.TrainingDepart}}</span>
+                        <div class="controls" ng-class="TrainingDepart.$invalid && TrainingDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="TrainingDepart" ng-model="row.TrainingDepart" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'类型'"  filter ="{'TrainingType':'text'}" sortable="'TrainingType'" ng-switch="row.isEditing" ng-class="TrainingType.$dirty ? 'bg-warning' : ''" ng-form="TrainingType" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.TrainingType}}</span>
+                        <div class="controls" ng-class="TrainingType.$invalid && TrainingType.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="TrainingType" ng-model="row.TrainingType" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'编制日期'"  filter ="{'TrainingDate':'text'}" sortable="'TrainingDate'" ng-switch="row.isEditing" ng-class="TrainingDate.$dirty ? 'bg-warning' : ''" ng-form="TrainingDate" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.TrainingDate}}</span>
+                        <div class="controls" ng-class="TrainingDate.$invalid && TrainingDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="TrainingDate" ng-model="row.TrainingDate" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'状态'"  filter ="{'TrainingState':'text'}" sortable="'TrainingState'" ng-switch="row.isEditing" ng-class="TrainingState.$dirty ? 'bg-warning' : ''" ng-form="TrainingState" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.TrainingState}}</span>
+                        <div class="controls" ng-class="TrainingState.$invalid && TrainingState.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="TrainingState" ng-model="row.TrainingState" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 195px" data-title="'操作'">
+                        <button class="btn btn-default" ng-click="train11.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                        <button class="btn btn-default" ng-click="train11.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                        <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                        <button class="btn btn-default" ng-click="train11.del(row)" ng-if="!row.isEditing">删除</button>
+                        <button class="btn btn-default">成果</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--<div>-->
+                <!--<input type="text" ng-model="newTrainingName" placeholder="请输入名称">-->
+                <!--<input type="text" ng-model="newTrainingDepart" placeholder="请输入制定部门/单位">-->
+                <!--<input type="text" ng-model="newTrainingType" placeholder="请输入类型">-->
+                <!--<input type="text" ng-model="newTrainingDate" placeholder="请输入编制日期">-->
+                <!--<input type="text" ng-model="newTrainingState" placeholder="请输入状态">-->
+                <!--<button class="btn btn-default" ng-click="newTraining()">新建</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

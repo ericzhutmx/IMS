@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="/bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <title>测试用</title>
+</head>
+<body ng-controller="testCtrl as test11">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addTest">新增</button>
+    <div class="modal fade" id="addTest" tabindex="-1" role="dialog" aria-labelledby="addTest1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addTest1">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <p>帅</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" ng-table="test11.tableParams" show-filter="true">
+        <!--<thead>-->
+            <!--<th>名称</th>-->
+            <!--<th>ID</th>-->
+            <!--<th>年龄</th>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <tr ng-repeat="test123 in data">
+                <td data-title="'序号'">{{$index+1}}</td>
+                <td data-title="'名称'" filter="{Name:'text'}" sortable="'Name'">{{test123.Name}}</td>
+                <td data-title="'年龄'" filter="{Age:'number'}" sortable="'Age'">{{test123.Age}}</td>
+                <td data-title="'金钱'" filter="{Money:'number'}" sortable="'Money'">{{test123.Money}}</td>
+                <td data-title="'操作'">
+                    <button class="btn btn-default">编辑</button>
+                    <button class="btn btn-default" ng-click="deleteTest($index)">删除</button>
+                </td>
+            </tr>
+        <!--</tbody>-->
+    </table>
+</body>
+</html>

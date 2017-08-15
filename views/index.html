@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>民用运输机场应急信息管理系统</title>
+    <meta name="author" content="jiechen">
+    <meta name="description" content="民用运输机场应急信息管理系统">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/bootstrap-table-master/src/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap-table-master/src/bootstrap-table.css">
+    <script src="/public/javascripts/controller/planTypeCtrl.js"></script>
+    <script src="/public/javascripts/controller/appCtrl.js"></script>
+    <script src="/public/javascripts/controller/deviceTypeCtrl.js"></script>
+    <script src="/public/javascripts/controller/facilityTypeCtrl.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <script src="/bower_components/ng-table-export/ng-table-export.js"></script>
+    <script src="/public/javascripts/controller/reportCtrl.js"></script>
+    <script src="/public/javascripts/controller/userCtrl.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI&services=&t=20170725120922"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.2/src/TrafficControl.js"></script>
+    <link href="http://api.map.baidu.com/library/TrafficControl/1.2/src/TrafficControl_min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://api.map.baidu.com/res/12/bmap.css">
+    <script src="/public/javascripts/controller/elementCtrl.js"></script>
+    <script src="/bower_components/zTree_v3-master/js/jquery.ztree.core.js"></script>
+    <link rel="stylesheet" href="/bower_components/zTree_v3-master/css/zTreeStyle/zTreeStyle.css">
+    <!--<script src="/bower_components/angular-baidu-map/dist/angular-baidu-map.js"></script>-->
+    <!--<script>var ngBaiduMap = window.ngBaiduMap;</script>-->
+    <script src="/public/javascripts/controller/departmentCtrl.js"></script>
+    <script src="/public/javascripts/controller/userconfigCtrl.js"></script>
+    <!--<script src="/bower_components/angular-echarts/dist/angular-echarts.js"></script>-->
+    <!--<script src="/bower_components/angular-echarts/dist/angular-echarts.min.js"></script>-->
+    <script src="/public/javascripts/controller/LineChartController.js"></script>
+    <script src="/public/javascripts/controller/trafficCtrl.js"></script>
+    <script src="/public/javascripts/controller/drawCtrl.js"></script>
+    <script src="/public/javascripts/controller/distanceCtrl.js"></script>
+    <script src="/public/javascripts/controller/rangeAnaCtrl.js"></script>
+    <script src="/bower_components/echarts.js"></script>
+    <script src="/public/javascripts/controller/dangerCtrl.js"></script>
+    <script src="/public/javascripts/controller/deviceCtrl.js"></script>
+    <script src="/public/javascripts/controller/expertCtrl.js"></script>
+    <script src="/public/javascripts/controller/historyCtrl.js"></script>
+    <script src="/public/javascripts/controller/hrCtrl.js"></script>
+    <script src="/public/javascripts/controller/trainingCtrl.js"></script>
+    <script src="/public/javascripts/controller/basicCtrl.js"></script>
+    <script src="/public/javascripts/controller/teamCtrl.js"></script>
+    <script src="/public/javascripts/controller/planCtrl.js"></script>
+    <script src="/public/javascripts/controller/emerCtrl.js"></script>
+    <script src="/public/javascripts/controller/governCtrl.js"></script>
+    <script src="/public/javascripts/controller/communicationCtrl.js"></script>
+    <script src="/public/javascripts/controller/shelterCtrl.js"></script>
+    <script src="/public/javascripts/controller/hospitalCtrl.js"></script>
+    <script src="/public/javascripts/controller/emerPlanCtrl.js"></script>
+    <script src="/public/javascripts/controller/testCtrl.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInRectangle/1.2/src/SearchInRectangle_min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
+    <!--<script type="text/javascript" src="/bower_components/ui-bootstrap-tpls-2.5.0.js"></script>-->
+    <script type="text/javascript" src="/public/javascripts/controller/loginCtrl.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-file-upload/dist/angular-file-upload.js"></script>
+</head>
+<body ng-controller="appCtrl">
+<nav class="navbar navbar-fixed-top"  style="background-color:lightblue;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">民用运输机场应急信息管理系统test</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="float: right">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="daily">日常管理</a></li>
+                <li><a ui-sref="report">事件接报</a></li>
+                <li><a ui-sref="emer">应急处置</a></li>
+                <li><a ui-sref="statistic">统计分析</a></li>
+                <li><a ui-sref="gis">GIS系统</a></li>
+                <li><a ui-sref="system">系统管理</a></li>
+                <li><a ui-sref="config">配置管理</a></li>
+                <li><a ui-sref="user">{{test}}</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div ui-view></div>
+</body>
+
+
+</html>

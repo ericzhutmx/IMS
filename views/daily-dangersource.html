@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>危险源与重大设施</title>
+</head>
+<body>
+    <div ng-controller="dangerCtrl as danger">
+        <div class="jumbotron">
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="SourceName">名称</label>
+                        <input id="SourceName" type="text" class="form-control" ng-model="row.SourceName">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="SourceDepart">所属单位</label>
+                        <input id="SourceDepart" type="text" class="form-control" ng-model="row.SourceDepart">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="SourceCord">精确坐标</label>
+                        <input id="SourceCord" type="text" class="form-control" ng-model="row.SourceCord">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="SourceAttr">属性</label>
+                        <input id="SourceAttr" type="text" class="form-control" ng-model="row.SourceAttr">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="SourceToDepartment">对接部门/单位</label>
+                        <input id="SourceToDepartment" type="text" class="form-control" ng-model="row.SourceToDepartment">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="SourceType">类型</label>
+                        <input id="SourceType" type="text" class="form-control" ng-model="row.SourceType">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>危险源与重大设施</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-condensed table-bordered table-hover" ng-table="danger.tableParams" style="text-align: center" data-pagination="true" show-filter="true" ng-form="danger.tableForm" disable-filter="danger.isAdding" demo-tracked-table="danger.tableTracker">
+                    <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+
+                        <td style="text-align: center" data-title="'名称'" filter ="{'SourceName':'text'}" sortable="'SourceName'" ng-switch="row.isEditing" ng-class="SourceName.$dirty ? 'bg-warning' : ''" ng-form="SourceName" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceName}}</span>
+                            <div class="controls" ng-class="SourceName.$invalid && SourceName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceName" ng-model="row.SourceName" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'属性'" filter ="{'SourceAttr':'text'}" sortable="'SourceAttr'" ng-switch="row.isEditing" ng-class="SourceAttr.$dirty ? 'bg-warning' : ''" ng-form="SourceAttr" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceAttr}}</span>
+                            <div class="controls" ng-class="SourceAttr.$invalid && SourceAttr.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceAttr" ng-model="row.SourceAttr" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center;width: 80px" data-title="'类型'" filter ="{'SourceType':'text'}" sortable="'SourceType'" ng-switch="row.isEditing" ng-class="SourceType.$dirty ? 'bg-warning' : ''" ng-form="SourceType" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceType}}</span>
+                            <div class="controls" ng-class="SourceType.$invalid && SourceType.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceType" ng-model="row.SourceType" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center;width: 150px" data-title="'地址'" filter ="{'SourceAddress':'text'}" sortable="'SourceAddress'" ng-switch="row.isEditing" ng-class="SourceAddress.$dirty ? 'bg-warning' : ''" ng-form="SourceAddress" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceAddress}}</span>
+                            <div class="controls" ng-class="SourceAddress.$invalid && SourceAddress.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceAddress" ng-model="row.SourceAddress" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center;width: 90px" data-title="'所属单位'" filter ="{'SourceDepart':'text'}" sortable="'SourceDepart'" ng-switch="row.isEditing" ng-class="SourceDepart.$dirty ? 'bg-warning' : ''" ng-form="SourceDepart" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceDepart}}</span>
+                            <div class="controls" ng-class="SourceDepart.$invalid && SourceDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceDepart" ng-model="row.SourceDepart" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'联系人'" filter ="{'SourceContact':'text'}" sortable="'SourceContact'" ng-switch="row.isEditing" ng-class="SourceContact.$dirty ? 'bg-warning' : ''" ng-form="SourceContact" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceContact}}</span>
+                            <div class="controls" ng-class="SourceContact.$invalid && SourceContact.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceContact" ng-model="row.SourceContact" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'联系电话'" filter ="{'SourcePhone':'text'}" sortable="'SourcePhone'" ng-switch="row.isEditing" ng-class="SourcePhone.$dirty ? 'bg-warning' : ''" ng-form="SourcePhone" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourcePhone}}</span>
+                            <div class="controls" ng-class="SourcePhone.$invalid && SourcePhone.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourcePhone" ng-model="row.SourcePhone" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'对接部门/单位'" filter ="{'SourceToDepartment':'text'}" sortable="'SourceToDepartment'" ng-switch="row.isEditing" ng-class="SourceToDepartment.$dirty ? 'bg-warning' : ''" ng-form="SourceToDepartment" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceToDepartment}}</span>
+                            <div class="controls" ng-class="SourceToDepartment.$invalid && SourceToDepartment.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceToDepartment" ng-model="row.SourceToDepartment" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center" data-title="'精确坐标'" filter ="{'SourceCord':'text'}" sortable="'SourceCord'" ng-switch="row.isEditing" ng-class="SourceCord.$dirty ? 'bg-warning' : ''" ng-form="SourceCord" demo-tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.SourceCord}}</span>
+                            <div class="controls" ng-class="SourceCord.$invalid && SourceCord.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="SourceCord" ng-model="row.SourceCord" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center; width: 130px" data-title="'操作'">
+                            <button class="btn btn-default" ng-click="danger.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                            <button class="btn btn-default" ng-click="danger.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                            <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                            <button class="btn btn-default" ng-click="danger.del(row)" ng-if="!row.isEditing">删除</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

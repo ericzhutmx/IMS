@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>避难场所</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="shelterCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>避难场所</h4></div>
+            <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">避难场所</th>
+                <th style="text-align: center">地址</th>
+                <th style="text-align: center">精确坐标</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="shelter in shelters">
+                <td>
+                    <span ng-if="!shelter.$edit">{{shelter.ShelterName}}</span>
+                    <div ng-if="shelter.$edit">
+                        <input type="text" ng-model="shelter.ShelterName">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!shelter.$edit">{{shelter.ShelterAddress}}</span>
+                    <div ng-if="shelter.$edit">
+                        <input type="text" ng-model="shelter.ShelterAddress">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!shelter.$edit">{{shelter.ShelterCord}}</span>
+                    <div ng-if="shelter.$edit">
+                        <input type="text" ng-model="shelter.ShelterCord">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!shelter.$edit" ng-click="shelter.$edit=true" >编辑</button>
+                    <button class="btn btn-default" ng-if="shelter.$edit" ng-click="shelter.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!shelter.$edit" ng-click="deleteShelter($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="text" ng-model="newShelterName" placeholder="请输入避难场所名称">
+            <input type="text" ng-model="newShelterAddress" placeholder="请输入地址">
+            <input type="text" ng-model="newShelterCord" placeholder="请输入精确坐标">
+
+            <button class="btn btn-default" ng-click="newShelter()">新建</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

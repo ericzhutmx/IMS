@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户</title>
+</head>
+<body>
+    <div ng-controller="userCtrl" class="container" style="margin-top: 100px">
+        <div class="jumbotron">
+            <h4>个人中心</h4>
+            <table class="table table-borered table-hover" ng-table="tableParams">
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="logger in loggers">
+                    <td>
+                        <span ng-if="!device.$edit">{{logger.LoggerName}}</span>
+                        <div ng-if="device.$edit">
+                            <input type="text" ng-model="device.DeviceName">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-default" ng-if="!device.$edit" ng-click="device.$edit=true" >编辑</button>
+                        <button class="btn btn-default" ng-if="device.$edit" ng-click="device.$edit=false">保存</button>
+                        <button class="btn btn-default" ng-if="!device.$edit" ng-click="deleteDeviceType($index)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

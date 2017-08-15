@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="expertCtrl as expert11">
+    <div class="jumbotron">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="ExpertName">专家姓名</label>
+                    <input type="text" class="form-control" id="ExpertName" ng-model="row.ExpertName">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="ExpertField">专业方向</label>
+                    <input type="text" class="form-control" id="ExpertField" ng-model="row.ExpertField">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="ExpertToDepart">对接部门/单位</label>
+                    <input type="text" class="form-control" id="ExpertToDepart" ng-model="row.ExpertToDepart">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label for="ExpertDepart">工作单位/部门</label>
+                    <input type="text" class="form-control" id="ExpertDepart" ng-model="row.ExpertDepart">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="ExpertTitle">现任职务/专业职称</label>
+                    <input type="text" class="form-control" id="ExpertTitle" ng-model="row.ExpertTitle">
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <div class="panel panel-default" >
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2"><h4>专家库</h4></div>
+                <div class="col-offset-md-10 col-md-4">
+                    <button class="btn btn-default">新增</button>
+                    <button class="btn btn-default">导入</button>
+                    <button class="btn btn-default">导出</button>
+                    <button class="btn btn-default">表单模板</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered" data-pagination="true" ng-table="expert11.tableParams" show-filter="true" ng-form="expert11.tableForm" disable-filter="expert11.isAdding" demo-tracked-table="expert11.tableTracker">
+                <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+                    <td style="text-align: center" data-title="'姓名'"  filter ="{'ExpertName':'text'}" sortable="'ExpertName'" ng-switch="row.isEditing" ng-class="ExpertName.$dirty ? 'bg-warning' : ''" ng-form="ExpertName" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertName}}</span>
+                        <div class="controls" ng-class="ExpertName.$invalid && ExpertName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertName" ng-model="row.ExpertName" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'工作单位/部门'"  filter ="{'ExpertDepart':'text'}" sortable="'ExpertDepart'" ng-switch="row.isEditing" ng-class="ExpertDepart.$dirty ? 'bg-warning' : ''" ng-form="ExpertDepart" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertDepart}}</span>
+                        <div class="controls" ng-class="ExpertDepart.$invalid && ExpertDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertDepart" ng-model="row.ExpertDepart" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'专业方向'"  filter ="{'ExpertField':'text'}" sortable="'ExpertField'" ng-switch="row.isEditing" ng-class="ExpertField.$dirty ? 'bg-warning' : ''" ng-form="ExpertField" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertField}}</span>
+                        <div class="controls" ng-class="ExpertField.$invalid && ExpertField.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertField" ng-model="row.ExpertField" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'现任职务/专业职称'"  filter ="{'ExpertTitle':'text'}" sortable="'ExpertTitle'" ng-switch="row.isEditing" ng-class="ExpertTitle.$dirty ? 'bg-warning' : ''" ng-form="ExpertTitle" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertTitle}}</span>
+                        <div class="controls" ng-class="ExpertTitle.$invalid && ExpertTitle.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertTitle" ng-model="row.ExpertTitle" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'对接单位/部门'"  filter ="{'ExpertToDepart':'text'}" sortable="'ExpertToDepart'" ng-switch="row.isEditing" ng-class="ExpertToDepart.$dirty ? 'bg-warning' : ''" ng-form="ExpertToDepart" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertToDepart}}</span>
+                        <div class="controls" ng-class="ExpertToDepart.$invalid && ExpertToDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertToDepart" ng-model="row.ExpertToDepart" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'联系电话'"  filter ="{'ExpertPhone':'text'}" sortable="'ExpertPhone'" ng-switch="row.isEditing" ng-class="ExpertPhone.$dirty ? 'bg-warning' : ''" ng-form="ExpertPhone" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.ExpertPhone}}</span>
+                        <div class="controls" ng-class="ExpertPhone.$invalid && ExpertPhone.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="ExpertPhone" ng-model="row.ExpertPhone" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 130px" data-title="'操作'">
+                        <button class="btn btn-default" ng-click="expert11.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                        <button class="btn btn-default" ng-click="expert11.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                        <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                        <button class="btn btn-default" ng-click="expert11.del(row)" ng-if="!row.isEditing">删除</button>
+                    </td>
+                </tr>
+            </table>
+            <!--<div>-->
+                <!--<input type="text" ng-model="newExpertName" placeholder="请输入专家姓名">-->
+                <!--<input type="text" ng-model="newExpertDepart" placeholder="请输入专家部门">-->
+                <!--<input type="text" ng-model="newExpertField" placeholder="请输入专家专业方向">-->
+                <!--<input type="text" ng-model="newExpertTitle" placeholder="请输入专家职称">-->
+                <!--<input type="text" ng-model="newExpertToDepart" placeholder="请输入对接部门">-->
+                <!--<input type="text" ng-model="newExpertPhone" placeholder="请输入联系电话">-->
+                <!--<button class="btn btn-default" ng-click="newExpert()">新建</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

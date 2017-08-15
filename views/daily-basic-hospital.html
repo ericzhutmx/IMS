@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>医疗救援</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="hospitalCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>医疗救援</h4></div>
+            <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">医疗点</th>
+                <th style="text-align: center">医院名称</th>
+                <th style="text-align: center">描述</th>
+                <th style="text-align: center">地址</th>
+                <th style="text-align: center">精确坐标</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="hospital in hospitals">
+                <td>
+                    <span ng-if="!hospital.$edit">{{hospital.HospitalSpot}}</span>
+                    <div ng-if="hospital.$edit">
+                        <input type="text" ng-model="hospital.HospitalSpot">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hospital.$edit">{{hospital.HospitalName}}</span>
+                    <div ng-if="hospital.$edit">
+                        <input type="text" ng-model="hospital.HospitalName">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hospital.$edit">{{hospital.HospitalSpotDescirp}}</span>
+                    <div ng-if="hospital.$edit">
+                        <input type="text" ng-model="hospital.HospitalSpotDescirp">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hospital.$edit">{{hospital.HospitalAddress}}</span>
+                    <div ng-if="hospital.$edit">
+                        <input type="text" ng-model="hospital.HospitalAddress">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hospital.$edit">{{hospital.HospitalCord}}</span>
+                    <div ng-if="hospital.$edit">
+                        <input type="text" ng-model="hospital.HospitalCord">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!hospital.$edit" ng-click="hospital.$edit=true" >编辑</button>
+                    <button class="btn btn-default" ng-if="hospital.$edit" ng-click="hospital.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!hospital.$edit" ng-click="deleteHospital($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="text" ng-model="newHospitalSpot" placeholder="请输入医疗点名称">
+            <input type="text" ng-model="newHospitalName" placeholder="请输入医院名称">
+            <input type="text" ng-model="newHospitalSpotDescirp" placeholder="请输入医院描述">
+            <input type="text" ng-model="newHospitalAddress" placeholder="请输入地址">
+            <input type="text" ng-model="newHospitalCord" placeholder="请输入精确坐标">
+
+            <button class="btn btn-default" ng-click="newHospital()">新建</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI&services=&t=20170725120922"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInRectangle/1.2/src/SearchInRectangle_min.js"></script>
+    <title>范围分析</title>
+</head>
+<body>
+    <div class="container" ng-controller="rangeAnaCtrl">
+        <div>
+            <button type="button" class="btn btn-default" ng-click="pullBox.open()">方格搜索</button>
+            <button type="button" class="btn btn-default" ng-click="pullBox.close()">关闭</button>
+        </div>
+        <div style="width:100%;height:500px;border:1px solid gray" id="rangeAna"></div>
+        <div style="width:100%;height:500px;border:1px solid gray" id="resultPanel"></div>
+    </div>
+</body>
+</html>
