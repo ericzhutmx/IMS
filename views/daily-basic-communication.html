@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>通讯设施</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="communicationCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>通讯设施</h4></div>
+            <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">通讯设施</th>
+                <th style="text-align: center">地址</th>
+                <th style="text-align: center">精确坐标</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="communication in communications">
+                <td>
+                    <span ng-if="!communication.$edit">{{communication.communicationsName}}</span>
+                    <div ng-if="communication.$edit">
+                        <input type="text" ng-model="communication.communicationsName">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!communication.$edit">{{communication.CommunicationAddress}}</span>
+                    <div ng-if="communication.$edit">
+                        <input type="text" ng-model="communication.CommunicationAddress">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!communication.$edit">{{communication.communicationsCord}}</span>
+                    <div ng-if="communication.$edit">
+                        <input type="text" ng-model="communication.communicationsCord">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!communication.$edit" ng-click="communication.$edit=true" >编辑</button>
+                    <button class="btn btn-default" ng-if="communication.$edit" ng-click="communication.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!communication.$edit" ng-click="deleteCommunication($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="text" ng-model="newcommunicationsName" placeholder="请输入政府名称">
+            <input type="text" ng-model="newCommunicationAddress" placeholder="请输入地址">
+            <input type="text" ng-model="newcommunicationsCord" placeholder="请输入精确坐标">
+
+            <button class="btn btn-default" ng-click="newCommunication()">新建</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

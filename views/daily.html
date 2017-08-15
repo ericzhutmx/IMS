@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" style="margin-top: 100px">
+    <div class="jumbotron">
+        <div>
+            <ul class="nav nav-tabs navbar-static-top" role="tablist">
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.plans">预案与处置程序</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.dangerSource">危险源与重大设施</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.device">应急设备</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.expert">专家库</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.history">案例库</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.training">培训与演练</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.hr">应急人员</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.basic">基础信息管理</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.team">救援队伍</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="daily.test">测试</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div ui-view></div>
+</div>
+
+</body>
+</html>

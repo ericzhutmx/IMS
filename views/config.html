@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container" style="margin-top: 100px">
+        <div class="jumbotron">
+            <div>
+                <ul class="nav nav-tabs navbar-static-top" role="tablist">
+                    <li role="presentation" data-toggle="tab"><a ui-sref="config.plan">预案类型</a></li>
+                    <li role="presentation" data-toggle="tab"><a ui-sref="config.device">应急设备类型</a></li>
+                    <li role="presentation" data-toggle="tab"><a ui-sref="config.facility">重大设施与危险源类型</a></li>
+                </ul>
+            </div>
+            <div ui-view></div>
+        </div>
+
+    </div>
+</body>
+</html>

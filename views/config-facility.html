@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>重大设施与危险源类型</title>
+</head>
+<body>
+    <div class="panel panel-default" ng-controller="facilityTypeCtrl">
+        <div class="panel-heading">
+            <h4>重大设施与危险源类型管理</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover" ng-table="tableParams">
+                <thead>
+                    <tr>
+                        <th>重大设施与危险源</th>
+                        <th>图标预览</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="facility in facilities">
+                        <td>
+                            <span ng-if="!facility.$edit">{{facility.FacilityName}}</span>
+                            <div ng-if="facility.$edit">
+                                <input type="text" ng-model="facility.FacilityName">
+                            </div>
+                        </td>
+                        <td><img src="/public/images/u1179.png" width="22" height="22"></td>
+                        <td>
+                            <button class="btn btn-default" ng-if="!facility.$edit" ng-click="facility.$edit=true" >编辑</button>
+                            <button class="btn btn-default" ng-if="facility.$edit" ng-click="facility.$edit=false">保存</button>
+                            <button class="btn btn-default" ng-if="!facility.$edit" ng-click="deleteFacilityType($index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <input type="text" ng-model="newFacilityName" placeholder="请输入新的重大设施与危险源类型">
+                <button class="btn btn-default" ng-click="newFacilityType()">新建</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "device":[
+    { "deviceName":"救援破拆器材","deviceId":"1"},
+    { "deviceName":"残损航空器搬移设备","deviceId":"2"},
+    { "deviceName":"救护车辆","deviceId":"3"},
+    { "deviceName":"消防车辆","deviceId":"4"},
+    { "deviceName":"其他","deviceId":"5"}
+  ]
+}

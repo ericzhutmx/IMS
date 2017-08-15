@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>应急人员</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="hrCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>应急救援人员</h4></div>
+            <div class="col-offset-md-10 col-md-2">
+                <button class="btn btn-default" ng-click="templatereverse()">新增</button>
+                <input type="file" nv-file-select uploader="uploader">
+                <ul>
+                    <li ng-repeat="item in uploader.queue">
+                        Name: <span ng-bind="item.file.name"></span><br/>
+                        <button  class="btn btn-default" ng-click="item.upload()">上传</button>
+                    </li>
+                 </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <div class="jumbotron"  ng-show="newinput">
+            <form>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="newHrName">人员</label>
+                        <input type="text" ng-model="newHrName" placeholder="请输入人员姓名" class="form-control" id="newHrName">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="newHrDepart">工作单位</label>
+                        <input type="text" ng-model="newHrDepart" placeholder="请输入工作单位" class="form-control" id="newHrDepart">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="newHrTitle">职位</label>
+                        <input type="text" ng-model="newHrTitle" placeholder="请输入职位" class="form-control" id="newHrTitle">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="newHrPhone">联系电话</label>
+                        <input type="text" ng-model="newHrPhone" placeholder="请输入联系电话" class="form-control" id="newHrPhone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="newHrAttr">属性</label>
+                        <input type="text" ng-model="newHrAttr" placeholder="请输入属性" class="form-control" id="newHrAttr">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="newHrAsscoDepart">关联部门</label>
+                        <input type="text" ng-model="newHrAsscoDepart" placeholder="请输入关联部门" class="form-control" id="newHrAsscoDepart">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="newHrButton"></label>
+                        <button class="btn btn-default" ng-click="newHr()" id="newHrButton">保存</button>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">人员姓名</th>
+                <th style="text-align: center">工作单位</th>
+                <th style="text-align: center">职位</th>
+                <th style="text-align: center">联系电话</th>
+                <th style="text-align: center">属性</th>
+                <th style="text-align: center">关联部门/单位</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="hr in hrs">
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrName}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrName">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrDepart}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrDepart">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrTitle}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrTitle">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrPhone}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrPhone">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrAttr}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrAttr">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!hr.$edit">{{hr.HrAsscoDepart}}</span>
+                    <div ng-if="hr.$edit">
+                        <input type="text" ng-model="hr.HrAsscoDepart">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!hr.$edit" ng-click="hr.$edit=true">编辑</button>
+                    <button class="btn btn-default" ng-if="hr.$edit" ng-click="hr.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!hr.$edit" ng-click="deleteHr($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="jumbotron" ng-show="newedit">
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>应急处置</title>
+</head>
+<body>
+<div class="container" style="margin-top: 100px">
+    <div class="jumbotron">
+        <div>
+            <ul class="nav nav-tabs navbar-static-top" role="tablist">
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.plans">预案查阅</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.map">地图研判</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.expert">专家呼叫</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.hr">应急人员</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.team">救援队伍</a></li>
+                <li role="presentation" data-toggle="tab"><a ui-sref="emer.car">应急车辆管理</a></li>
+            </ul>
+        </div>
+        <div ui-view></div>
+    </div>
+
+</div>
+</body>
+</html>
+

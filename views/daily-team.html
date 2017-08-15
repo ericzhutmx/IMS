@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>应急救援队伍</title>
+</head>
+<body>
+<div class="panel panel-default" ng-controller="teamCtrl">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2"><h4>应急救援队伍</h4></div>
+            <div class="col-offset-md-10 col-md-2">
+                <button class="btn btn-default" data-toggle="modal" data-target="#addTeam">新增</button>
+                <!-- Modal -->
+                <div class="modal fade" id="addTeam" tabindex="-1" role="dialog" aria-labelledby="teamLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="teamLabel">Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <label for="teamName">单位名称</label>
+                                        <input class="form-control" type="text" id="teamName" ng-model="newTeamDpart">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered" style="text-align: center">
+            <thead>
+            <tr>
+                <th  style="text-align: center">单位</th>
+                <th style="text-align: center">属性</th>
+                <th style="text-align: center">值班电话</th>
+                <th style="text-align: center">传真</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="team in teams">
+                <td>
+                    <span ng-if="!team.$edit">{{team.TeamDepart}}</span>
+                    <div ng-if="team.$edit">
+                        <input type="text" ng-model="team.TeamDepart">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!team.$edit">{{team.TeamAttr}}</span>
+                    <div ng-if="team.$edit">
+                        <input type="text" ng-model="team.TeamAttr">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!team.$edit">{{team.TeamPhone}}</span>
+                    <div ng-if="team.$edit">
+                        <input type="text" ng-model="team.TeamPhone">
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!team.$edit">{{team.TeamFax}}</span>
+                    <div ng-if="team.$edit">
+                        <input type="text" ng-model="team.TeamFax">
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-if="!team.$edit" ng-click="team.$edit=true" >编辑</button>
+                    <button class="btn btn-default" ng-if="team.$edit" ng-click="team.$edit=false">保存</button>
+                    <button class="btn btn-default" ng-if="!team.$edit" ng-click="deleteTeam($index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="text" ng-model="newTeamDepart" placeholder="请输入单位">
+            <input type="text" ng-model="newTeamAttr" placeholder="请输入属性">
+            <input type="text" ng-model="newTeamPhone" placeholder="请输入值班电话">
+            <input type="text" ng-model="newTeamFax" placeholder="请输入传真">
+            <button class="btn btn-default" ng-click="newTeam()">新建</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI&services=&t=20170725120922"></script>
+    <title>距离量测</title>
+</head>
+<body>
+    <div class="container" ng-controller="distanceCtrl">
+        <div>
+            <button class="btn btn-default" ng-click="myDis.open()">开启距离量测</button>
+            <button class="btn btn-default" ng-click="myDis.close()">关闭距离量测</button>
+        </div>
+        <div style="width:100%;height:500px;border:1px solid gray" id="container3"></div>
+    </div>
+</body>
+</html>

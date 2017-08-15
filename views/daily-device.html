@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>应急设备</title>
+</head>
+<body>
+<div ng-controller="deviceCtrl as device11">
+    <div class="jumbotron">
+        <form>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="DeviceName">名称</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceName" id="DeviceName">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="DeviceDepart">部门/单位</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceDepart" id="DeviceDepart">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="DeviceType1">类型</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceType1" id="DeviceType1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="date">入库日期</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceExpireDate" id="date">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="DeviceExpireDate">过期日期</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceExpireDate" id="DeviceExpireDate">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="DeviceAbradability">磨损度</label>
+                    <input type="text" class="form-control" ng-model="row.DeviceAbradability" id="DeviceAbradability">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2"><h4>应急设备</h4></div>
+                <div class="col-offset-md-2 col-md-4">
+                    <button class="btn btn-default">新增</button>
+                    <input  type="file" nv-file-select uploader="plan11.uploader">
+                    <ul>
+                        <li ng-repeat="item in uploader.queue">
+                            Name: <span ng-bind="item.file.name"></span><br/>
+                            <button ng-click="item.upload()">upload</button>
+                        </li>
+                    </ul>
+                    <button class="btn btn-default">导出</button>
+                    <button class="btn btn-default">表单模板</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered" data-pagination="true" ng-table="device11.tableParams" show-filter="true" ng-form="device11.tableForm" disable-filter="device11.isAdding" demo-tracked-table="device11.tableTracker">
+                <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+                    <td style="text-align: center" data-title="'名称'"  filter ="{'DeviceName':'text'}" sortable="'DeviceName'" ng-switch="row.isEditing" ng-class="DeviceName.$dirty ? 'bg-warning' : ''" ng-form="DeviceName" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceName}}</span>
+                        <div class="controls" ng-class="DeviceName.$invalid && DeviceName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceName" ng-model="row.DeviceName" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+
+                    <td style="text-align: center" data-title="'编号'"  filter ="{'DeviceNumber':'text'}" sortable="'DeviceNumber'" ng-switch="row.isEditing" ng-class="DeviceNumber.$dirty ? 'bg-warning' : ''" ng-form="DeviceNumber" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceNumber}}</span>
+                        <div class="controls" ng-class="DeviceNumber.$invalid && DeviceNumber.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceNumber" ng-model="row.DeviceNumber" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'类型'"  filter ="{'DeviceType1':'text'}" sortable="'DeviceType1'" ng-switch="row.isEditing" ng-class="DeviceType1.$dirty ? 'bg-warning' : ''" ng-form="DeviceType1" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceType1}}</span>
+                        <div class="controls" ng-class="DeviceType1.$invalid && DeviceType1.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceType1" ng-model="row.DeviceType1" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'部门/单位'"  filter ="{'DeviceDepart':'text'}" sortable="'DeviceDepart'" ng-switch="row.isEditing" ng-class="DeviceDepart.$dirty ? 'bg-warning' : ''" ng-form="DeviceDepart" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceDepart}}</span>
+                        <div class="controls" ng-class="DeviceDepart.$invalid && DeviceDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceDepart" ng-model="row.DeviceDepart" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'规格'"  filter ="{'DeviceSpec':'text'}" sortable="'DeviceSpec'" ng-switch="row.isEditing" ng-class="DeviceSpec.$dirty ? 'bg-warning' : ''" ng-form="DeviceSpec" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceSpec}}</span>
+                        <div class="controls" ng-class="DeviceSpec.$invalid && DeviceSpec.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceSpec" ng-model="row.DeviceSpec" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'数量'"  filter ="{'DeviceAmount':'text'}" sortable="'DeviceAmount'" ng-switch="row.isEditing" ng-class="DeviceAmount.$dirty ? 'bg-warning' : ''" ng-form="DeviceAmount" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceAmount}}</span>
+                        <div class="controls" ng-class="DeviceAmount.$invalid && DeviceAmount.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceAmount" ng-model="row.DeviceAmount" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'过期日期'"  filter ="{'DeviceExpireDate':'text'}" sortable="'DeviceExpireDate'" ng-switch="row.isEditing" ng-class="DeviceExpireDate.$dirty ? 'bg-warning' : ''" ng-form="DeviceExpireDate" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceExpireDate}}</span>
+                        <div class="controls" ng-class="DeviceExpireDate.$invalid && DeviceExpireDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceExpireDate" ng-model="row.DeviceExpireDate" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'磨损度'"  filter ="{'DeviceAbradability':'text'}" sortable="'DeviceAbradability'" ng-switch="row.isEditing" ng-class="DeviceAbradability.$dirty ? 'bg-warning' : ''" ng-form="DeviceAbradability" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.DeviceAbradability}}</span>
+                        <div class="controls" ng-class="DeviceAbradability.$invalid && DeviceAbradability.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="DeviceAbradability" ng-model="row.DeviceAbradability" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 130px" data-title="'操作'">
+                        <button class="btn btn-default" ng-click="device11.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                        <button class="btn btn-default" ng-click="device11.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                        <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                        <button class="btn btn-default" ng-click="device11.del(row)" ng-if="!row.isEditing">删除</button>
+                    </td>
+                </tr>
+            </table>
+            <!--<div>-->
+                <!--<input type="text" ng-model="newDeviceName" placeholder="请输入新的设备名称">-->
+                <!--<input type="text" ng-model="newDeviceNumber" placeholder="请输入新的设备编号">-->
+                <!--<input type="text" ng-model="newDeviceType1" placeholder="请输入新的设备类型">-->
+                <!--<input type="text" ng-model="newDeviceDepart" placeholder="请输入设备所属部门/单位">-->
+                <!--<input type="text" ng-model="newDeviceSpec" placeholder="请输入设备规格">-->
+                <!--<input type="text" ng-model="newDeviceAmount" placeholder="请输入设备数量">-->
+                <!--<input type="text" ng-model="newDeviceExpireDate" placeholder="请输入过期日期">-->
+                <!--<input type="text" ng-model="newDeviceAbradability" placeholder="请输入磨损度">-->
+                <!--<button class="btn btn-default" ng-click="newDevice()">新建</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=62zwo45pUjNrdGG6FOBG8ZN8Z2ecz9gI&services=&t=20170725120922"></script>
+    <!--加载鼠标绘制工具-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css">
+    <!--加载信息检索工具-->
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/librarySearchInfoWindow/1.4/src/SearchInfoWindow.min.js"></script>-->
+    <!--<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow.min.css">-->
+    <link rel="stylesheet" type="text/css" href="http://api.map.baidu.com/res/20/bmap_autocomplete.css">
+    <title>方格图绘制</title>
+</head>
+<body>
+    <div class="container" ng-controller="drawCtrl">
+        <div style="width:100%;height:500px;border:1px solid gray" id="squareMap"></div>
+    </div>
+</body>
+</html>

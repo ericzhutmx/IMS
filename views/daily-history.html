@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>案例库</title>
+</head>
+<body>
+<div ng-controller="historyCtrl as history11">
+    <div class="jumbotron">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="HistoryName">案例名称</label>
+                    <input type="HistoryName" ng-model="row.HistoryName" id="HistoryName" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="HistoryDepart">制定部门/单位</label>
+                    <input type="HistoryDepart" ng-model="row.HistoryDepart" id="HistoryDepart" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="HistoryType">事件类型</label>
+                    <input type="HistoryType" ng-model="row.HistoryType" id="HistoryType" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="HistoryDate">制定日期</label>
+                    <input type="HistoryDate" ng-model="row.HistoryDate" id="HistoryDate" class="form-control">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2"><h4>案例库</h4></div>
+                <div class="col-offset-md-10 col-md-2"><button class="btn btn-default">新增</button></div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered" data-pagination="true" ng-table="history11.tableParams" show-filter="true" ng-form="history11.tableForm" disable-filter="history11.isAdding" demo-tracked-table="history11.tableTracker">
+                <tr ng-repeat="row in $data"  ng-form="rowForm" demo-tracked-table-row="row">
+                    <td style="text-align: center" data-title="'案例名称'"  filter ="{'HistoryName':'text'}" sortable="'HistoryName'" ng-switch="row.isEditing" ng-class="HistoryName.$dirty ? 'bg-warning' : ''" ng-form="HistoryName" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.HistoryName}}</span>
+                        <div class="controls" ng-class="HistoryName.$invalid && HistoryName.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="HistoryName" ng-model="row.HistoryName" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'事件类型'"  filter ="{'HistoryType':'text'}" sortable="'HistoryType'" ng-switch="row.isEditing" ng-class="HistoryType.$dirty ? 'bg-warning' : ''" ng-form="HistoryType" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.HistoryType}}</span>
+                        <div class="controls" ng-class="HistoryType.$invalid && HistoryType.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="HistoryType" ng-model="row.HistoryType" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'制定部门/单位'"  filter ="{'HistoryDepart':'text'}" sortable="'HistoryDepart'" ng-switch="row.isEditing" ng-class="HistoryDepart.$dirty ? 'bg-warning' : ''" ng-form="HistoryDepart" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.HistoryDepart}}</span>
+                        <div class="controls" ng-class="HistoryDepart.$invalid && HistoryDepart.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="HistoryDepart" ng-model="row.HistoryDepart" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'等级'"  filter ="{'HistoryLevel':'text'}" sortable="'HistoryLevel'" ng-switch="row.isEditing" ng-class="HistoryLevel.$dirty ? 'bg-warning' : ''" ng-form="HistoryLevel" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.HistoryLevel}}</span>
+                        <div class="controls" ng-class="HistoryLevel.$invalid && HistoryLevel.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="HistoryLevel" ng-model="row.HistoryLevel" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'制定日期'"  filter ="{'HistoryDate':'text'}" sortable="'HistoryDate'" ng-switch="row.isEditing" ng-class="HistoryDate.$dirty ? 'bg-warning' : ''" ng-form="HistoryDate" demo-tracked-table-cell>
+                        <span ng-switch-default class="editable-text">{{row.HistoryDate}}</span>
+                        <div class="controls" ng-class="HistoryDate.$invalid && HistoryDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="HistoryDate" ng-model="row.HistoryDate" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 130px" data-title="'操作'">
+                        <button class="btn btn-default" ng-click="history11.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid">保存</button>
+                        <button class="btn btn-default" ng-click="history11.cancel(row, rowForm)" ng-if="row.isEditing">取消</button>
+                        <button class="btn btn-default" ng-click="row.isEditing = true" ng-if="!row.isEditing">编辑</button>
+                        <button class="btn btn-default" ng-click="history11.del(row)" ng-if="!row.isEditing">删除</button>
+                    </td>
+                </tr>
+            </table>
+            <!--<div>-->
+                <!--<input type="text" ng-model="newHistoryName" placeholder="请输入案例名称">-->
+                <!--<input type="text" ng-model="newHistoryType" placeholder="请输入事件类型">-->
+                <!--<input type="text" ng-model="newHistoryDepart" placeholder="请输入制定部门/单位">-->
+                <!--<input type="text" ng-model="newHistoryLevel" placeholder="请输入等级">-->
+                <!--<input type="text" ng-model="newHistoryDate" placeholder="请输入指定日期">-->
+                <!--<button class="btn btn-default" ng-click="newHistory()">新建</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

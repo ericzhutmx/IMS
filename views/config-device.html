@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>应急设备类型</title>
+</head>
+<body>
+    <div class="panel panel-default" ng-controller="deviceTypeCtrl">
+        <div class="panel-heading">
+            <h4>应急设备类型管理</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover table-bordered" ng-table="tableParams">
+                <thead>
+                    <tr>
+                        <th>应急设备类型</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="device in devices">
+                        <td>
+                            <span ng-if="!device.$edit">{{device.DeviceName}}</span>
+                            <div ng-if="device.$edit">
+                                <input type="text" ng-model="device.DeviceName">
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-default" ng-if="!device.$edit" ng-click="device.$edit=true" >编辑</button>
+                            <button class="btn btn-default" ng-if="device.$edit" ng-click="device.$edit=false">保存</button>
+                            <button class="btn btn-default" ng-if="!device.$edit" ng-click="deleteDeviceType($index)">删除</button>
+                        </td>
+                    </tr>
+
+
+                <!--<input type="text" ng-model="">-->
+                <!--<input>-->
+                <!--<input>-->
+                </tbody>
+            </table>
+
+                <input type="text" ng-model="newDeviceName" placeholder="请输入新的应急设备类型" required/>
+                <button class="btn btn-default" ng-click="newDeviceType()">新建</button>
+        </div>
+    </div>
+
+</body>
+</html>

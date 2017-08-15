@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="/bower_components/echarts.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div class="container" style="margin-top: 100px">
+    <div class="jumbotron">
+        <h4>预案与处置程序</h4>
+        <div class="row">
+            <div id="main" style="width: 600px;height: 400px; float: left"></div>
+            <div id="main2" style="width: 400px;height: 400px; float: right"></div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h4>重大设施与危险源</h4>
+        <div class="row">
+            <div id="main3" style="width: 400px;height: 400px;float:left;"></div>
+            <div id="main4" style="width: 400px;height: 400px;float: right"></div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h4>应急设备</h4>
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>名称</th>
+                    <th>单位</th>
+                    <th>数量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="4" style="text-align: center">救援破拆器材</td>
+                    <td>救生气袋</td>
+                    <td>个</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>充气气垫</td>
+                    <td>套</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>液压扩剪钳</td>
+                    <td>套</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">小计</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td rowspan="5" style="text-align: center">残损航空器搬移设备</td>
+                    <td>专用拖车</td>
+                    <td>辆</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>顶升气囊</td>
+                    <td>套</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>活动道面</td>
+                    <td>块</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>枕木</td>
+                    <td>根</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">小计</td>
+                    <td>76</td>
+                </tr>
+                <tr>
+                    <td rowspan="4" style="text-align: center">救援车辆</td>
+                    <td>普通型救护车</td>
+                    <td>辆</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>复苏型救护车</td>
+                    <td>辆</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>救护指挥车</td>
+                    <td>辆</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">小计</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td rowspan="4" style="text-align: center">消防车辆</td>
+                    <td>快速调动车</td>
+                    <td>辆</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>主力泡沫车</td>
+                    <td>辆</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>干粉车</td>
+                    <td>辆</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">小计</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td rowspan="4" style="text-align: center">其他</td>
+                    <td>救援船只</td>
+                    <td>艘</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>气筏</td>
+                    <td>艘</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>其他水上救生设备</td>
+                    <td>艘</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">小计</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center">总计</td>
+                    <td>195</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <h4>培训与演练</h4>
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>应急办</th>
+                        <th>消防护卫部</th>
+                        <th>医疗救援中心</th>
+                        <th>运控中心</th>
+                        <th>华南蓝天油料</th>
+                        <th>空港实业</th>
+                        <th>总计</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>计划数</td>
+                        <td>20</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>39</td>
+                    </tr>
+                    <tr>
+                        <td>完成数</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>34</td>
+                    </tr>
+                    <tr>
+                        <td>完成率</td>
+                        <td>90%</td>
+                        <td>80%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>50%</td>
+                        <td>66.7%</td>
+                        <td>87.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <h4>案例库</h4>
+        <div class="row">
+            <div id="main5" style="width: 700px;height: 400px"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
